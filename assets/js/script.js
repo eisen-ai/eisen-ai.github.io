@@ -15,3 +15,23 @@ function closeNav() {
     document.getElementById("overlay").style.width = "0%";
     document.getElementById("overlay").style.height = "0%";
 }
+
+function copyToClipboard() {
+    var selected = false;
+    var el = document.createElement('textarea');
+    el.value = 'pip3 install --upgrade eisen';
+    el.setAttribute('readonly', '');
+    el.style.position = 'absolute';
+    el.style.left = '-9999px';
+    document.body.appendChild(el);
+    if (document.getSelection().rangeCount > 0) {
+        selected = document.getSelection().getRangeAt(0)
+    }
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+    if (selected) {
+        document.getSelection().removeAllRanges();
+        document.getSelection().addRange(selected);
+    }
+}
