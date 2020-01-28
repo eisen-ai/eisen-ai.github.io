@@ -17,8 +17,8 @@ function closeNav() {
 }
 
 function copyToClipboard() {
-    var selected = false;
-    var el = document.createElement('textarea');
+    let selected = false;
+    let el = document.createElement('textarea');
     el.value = 'pip3 install --upgrade eisen';
     el.setAttribute('readonly', '');
     el.style.position = 'absolute';
