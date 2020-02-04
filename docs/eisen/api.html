@@ -164,6 +164,7 @@
 <li class="toctree-l1"><a class="reference internal" href="#eisen-datasets">Eisen.datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#eisen-io">Eisen.io</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#module-eisen.transforms">Eisen.transforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#module-eisen.utils.workflows">Eisen.utils.workflows</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Get Started</span></p>
 <ul>
@@ -263,6 +264,7 @@
 <li><p><a class="reference internal" href="#imaging-transforms" id="id5">Imaging Transforms</a></p></li>
 </ul>
 </li>
+<li><p><a class="reference internal" href="#module-eisen.utils.workflows" id="id6">Eisen.utils.workflows</a></p></li>
 </ul>
 </div>
 </div>
@@ -312,7 +314,7 @@ when implementing your own Datasets. Once the data is organized in this way it c
 The transforms are fed individual entries of the list and act on one or multiple fields of the resulting dictionary.</p>
 <span class="target" id="module-eisen.datasets"></span><span class="target" id="module-eisen.datasets"></span><dl class="class">
 <dt id="eisen.datasets.JsonDataset">
-<em class="property">class </em><code class="sig-prename descclassname">eisen.datasets.</code><code class="sig-name descname">JsonDataset</code><span class="sig-paren">(</span><em class="sig-param">data_dir</em>, <em class="sig-param">json_file</em>, <em class="sig-param">transform=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eisen/datasets/generic.html#JsonDataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eisen.datasets.JsonDataset" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">eisen.datasets.</code><code class="sig-name descname">JsonDataset</code><span class="sig-paren">(</span><em class="sig-param">data_dir</em>, <em class="sig-param">json_file</em>, <em class="sig-param">transform=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eisen/datasets/json.html#JsonDataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eisen.datasets.JsonDataset" title="Permalink to this definition">¶</a></dt>
 <dd><p>This object implements the capability of reading arbitrary data contained in properly structured JSON file
 into Eisen. The expected JSON file structure is a list of dictionaries. Each entry of the list contains
 one element of the dataset. Each key of the dictionary stores different information about that data point.</p>
@@ -329,7 +331,7 @@ one element of the dataset. Each key of the dictionary stores different informat
 </div>
 <dl class="method">
 <dt id="eisen.datasets.JsonDataset.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">data_dir</em>, <em class="sig-param">json_file</em>, <em class="sig-param">transform=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eisen/datasets/generic.html#JsonDataset.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eisen.datasets.JsonDataset.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">data_dir</em>, <em class="sig-param">json_file</em>, <em class="sig-param">transform=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eisen/datasets/json.html#JsonDataset.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eisen.datasets.JsonDataset.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -351,7 +353,7 @@ one element of the dataset. Each key of the dictionary stores different informat
 
 </dd></dl>
 
-<span class="target" id="module-eisen.datasets"></span><dl class="class">
+<dl class="class">
 <dt id="eisen.datasets.MSDDataset">
 <em class="property">class </em><code class="sig-prename descclassname">eisen.datasets.</code><code class="sig-name descname">MSDDataset</code><span class="sig-paren">(</span><em class="sig-param">data_dir</em>, <em class="sig-param">json_file</em>, <em class="sig-param">phase</em>, <em class="sig-param">transform=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eisen/datasets/msd.html#MSDDataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eisen.datasets.MSDDataset" title="Permalink to this definition">¶</a></dt>
 <dd><p>This object allows Medical Segmentation Decathlon data to be easily impoted in Eisen.
@@ -384,6 +386,50 @@ More information about the data can be found here <a class="reference external" 
     <span class="n">json_file</span><span class="o">=</span><span class="s1">&#39;/path/to/dataset.json&#39;</span><span class="p">,</span>
     <span class="n">phase</span><span class="o">=</span><span class="s1">&#39;training&#39;</span><span class="p">,</span>
     <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="eisen.datasets.PatchCamelyon">
+<em class="property">class </em><code class="sig-prename descclassname">eisen.datasets.</code><code class="sig-name descname">PatchCamelyon</code><span class="sig-paren">(</span><em class="sig-param">data_dir</em>, <em class="sig-param">x_h5_file</em>, <em class="sig-param">y_h5_file</em>, <em class="sig-param">mask_h5_file=None</em>, <em class="sig-param">transform=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eisen/datasets/camelyon.html#PatchCamelyon"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eisen.datasets.PatchCamelyon" title="Permalink to this definition">¶</a></dt>
+<dd><p>This object implements the capability of reading PatchCamelyon data. Further information about this dataset
+can be found on the official website <a class="reference external" href="https://patchcamelyon.grand-challenge.org/Introduction/">https://patchcamelyon.grand-challenge.org/Introduction/</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">eisen.datasets</span> <span class="kn">import</span> <span class="n">PatchCamelyon</span>
+
+<span class="n">dset</span> <span class="o">=</span> <span class="n">PatchCamelyon</span><span class="p">(</span>
+    <span class="s1">&#39;/data/root/path&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;camelyon_patch_level_2_split_train_x.h5&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;camelyon_patch_level_2_split_train_y.h5&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;camelyon_patch_level_2_split_train_mask.h5&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="eisen.datasets.PatchCamelyon.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">data_dir</em>, <em class="sig-param">x_h5_file</em>, <em class="sig-param">y_h5_file</em>, <em class="sig-param">mask_h5_file=None</em>, <em class="sig-param">transform=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eisen/datasets/camelyon.html#PatchCamelyon.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eisen.datasets.PatchCamelyon.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_dir</strong> (<em>str</em>) – the base directory where the data is located</p></li>
+<li><p><strong>x_h5_file</strong> (<em>str</em>) – the relative path of the H5 file containing x (the images)</p></li>
+<li><p><strong>y_h5_file</strong> (<em>str</em>) – the relative path of the H5 file containing y (the labels)</p></li>
+<li><p><strong>mask_h5_file</strong> (<em>str</em>) – the relative path of the H5 file containing masks</p></li>
+<li><p><strong>transform</strong> (<em>object</em>) – a transform object (can be the result of a composition of transforms)</p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">eisen.datasets</span> <span class="kn">import</span> <span class="n">PatchCamelyon</span>
+
+<span class="n">dset</span> <span class="o">=</span> <span class="n">PatchCamelyon</span><span class="p">(</span>
+    <span class="n">data_dir</span><span class="o">=</span><span class="s1">&#39;/data/root/path&#39;</span><span class="p">,</span>
+    <span class="n">x_h5_file</span><span class="o">=</span><span class="s1">&#39;camelyon_patch_level_2_split_train_x.h5&#39;</span><span class="p">,</span>
+    <span class="n">y_h5_file</span><span class="o">=</span><span class="s1">&#39;camelyon_patch_level_2_split_train_y.h5&#39;</span><span class="p">,</span>
+    <span class="n">mask_h5_file</span><span class="o">=</span><span class="s1">&#39;camelyon_patch_level_2_split_train_mask.h5&#39;</span><span class="p">,</span>
+    <span class="n">transform</span><span class="o">=</span><span class="n">transform</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -842,6 +888,97 @@ a size of 128 cubic pixels.</p>
 
 </div>
 </div>
+<div class="section" id="module-eisen.utils.workflows">
+<span id="eisen-utils-workflows"></span><h1><a class="toc-backref" href="#id6">Eisen.utils.workflows</a><a class="headerlink" href="#module-eisen.utils.workflows" title="Permalink to this headline">¶</a></h1>
+<p>Workflows realize high level functionality that joins several building blocks such as losses, metrics, transforms
+optimizers and models together in order to perform operations on them.</p>
+<p>Typical examples of workflows are Training, Testing and Validation. These basic workflows implement respectively the
+training, testing and validation loops. Workflows are implemented as python objects similar to this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">eisen.workflow</span> <span class="kn">import</span> <span class="n">GenericWorkflow</span>
+
+<span class="k">class</span> <span class="nc">DemoWorkflow</span><span class="p">(</span><span class="n">GenericWorkflow</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">model</span><span class="p">,</span>
+        <span class="n">data_loader</span><span class="p">,</span>
+        <span class="n">losses</span><span class="p">,</span>
+        <span class="n">optimizer</span><span class="p">,</span>
+        <span class="n">metrics</span>
+    <span class="p">):</span>
+
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>In particular, the arguments of the <cite>__init__</cite> function represent building blocks that need to be used together
+during the workflow.</p>
+<p>Refer to the following documentation to learn more.</p>
+<span class="target" id="module-eisen.utils.workflows"></span><dl class="class">
+<dt id="eisen.utils.workflows.Training">
+<em class="property">class </em><code class="sig-prename descclassname">eisen.utils.workflows.</code><code class="sig-name descname">Training</code><span class="sig-paren">(</span><em class="sig-param">model</em>, <em class="sig-param">data_loader</em>, <em class="sig-param">losses</em>, <em class="sig-param">optimizer</em>, <em class="sig-param">metrics=None</em>, <em class="sig-param">gpu=False</em>, <em class="sig-param">data_parallel=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eisen/utils/workflows/training.html#Training"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eisen.utils.workflows.Training" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="eisen.utils.workflows.Training.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">model</em>, <em class="sig-param">data_loader</em>, <em class="sig-param">losses</em>, <em class="sig-param">optimizer</em>, <em class="sig-param">metrics=None</em>, <em class="sig-param">gpu=False</em>, <em class="sig-param">data_parallel=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eisen/utils/workflows/training.html#Training.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eisen.utils.workflows.Training.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<em>torch.nn.Module</em>) – The model to be used for training. This model instance will be optimized by the Training module.</p></li>
+<li><p><strong>data_loader</strong> (<em>torch.utils.data.DataLoader</em>) – A DataLoader instance which handles the data loading and batching</p></li>
+<li><p><strong>losses</strong> (<em>list of torch.nn.Modules</em>) – A list of losses objects to be optimized</p></li>
+<li><p><strong>optimizer</strong> (<em>torch.optim.optimizer</em>) – An optimizer object such as torch.optim.Adam</p></li>
+<li><p><strong>metrics</strong> (<em>list</em>) – A list of metrics objects to be evaluated during training (similar to losses, but not optimized)</p></li>
+<li><p><strong>gpu</strong> (<em>bool</em>) – A flag indicating whether GPUs should be used during training</p></li>
+<li><p><strong>data_parallel</strong> (<em>bool</em>) – A flag indicating whether the network should be data parallel (torch.nn.DataParallel)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="eisen.utils.workflows.Testing">
+<em class="property">class </em><code class="sig-prename descclassname">eisen.utils.workflows.</code><code class="sig-name descname">Testing</code><span class="sig-paren">(</span><em class="sig-param">model</em>, <em class="sig-param">data_loader</em>, <em class="sig-param">metrics</em>, <em class="sig-param">gpu=False</em>, <em class="sig-param">data_parallel=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eisen/utils/workflows/testing.html#Testing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eisen.utils.workflows.Testing" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="eisen.utils.workflows.Testing.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">model</em>, <em class="sig-param">data_loader</em>, <em class="sig-param">metrics</em>, <em class="sig-param">gpu=False</em>, <em class="sig-param">data_parallel=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eisen/utils/workflows/testing.html#Testing.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eisen.utils.workflows.Testing.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<em>torch.nn.Module</em>) – The model to be used for testing. This model instance will be used only for forward passes.</p></li>
+<li><p><strong>data_loader</strong> (<em>torch.utils.data.DataLoader</em>) – A DataLoader instance which handles the data loading and batching</p></li>
+<li><p><strong>metrics</strong> (<em>list</em>) – A list of metrics objects to be evaluated during test</p></li>
+<li><p><strong>gpu</strong> (<em>bool</em>) – A flag indicating whether GPUs should be used during test</p></li>
+<li><p><strong>data_parallel</strong> (<em>bool</em>) – A flag indicating whether the network should be data parallel (torch.nn.DataParallel)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="eisen.utils.workflows.Validation">
+<em class="property">class </em><code class="sig-prename descclassname">eisen.utils.workflows.</code><code class="sig-name descname">Validation</code><span class="sig-paren">(</span><em class="sig-param">model</em>, <em class="sig-param">data_loader</em>, <em class="sig-param">losses</em>, <em class="sig-param">metrics=None</em>, <em class="sig-param">gpu=False</em>, <em class="sig-param">data_parallel=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eisen/utils/workflows/validation.html#Validation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eisen.utils.workflows.Validation" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="eisen.utils.workflows.Validation.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">model</em>, <em class="sig-param">data_loader</em>, <em class="sig-param">losses</em>, <em class="sig-param">metrics=None</em>, <em class="sig-param">gpu=False</em>, <em class="sig-param">data_parallel=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eisen/utils/workflows/validation.html#Validation.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eisen.utils.workflows.Validation.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<em>torch.nn.Module</em>) – The model to be used for validation. This model instance will be used only for forward passes.</p></li>
+<li><p><strong>data_loader</strong> (<em>torch.utils.data.DataLoader</em>) – A DataLoader instance which handles the data loading and batching</p></li>
+<li><p><strong>losses</strong> (<em>list of torch.nn.Modules</em>) – A list of losses objects to be evaluated on the validation set</p></li>
+<li><p><strong>metrics</strong> (<em>list</em>) – A list of metrics objects to be evaluated during validation</p></li>
+<li><p><strong>gpu</strong> (<em>bool</em>) – A flag indicating whether GPUs should be used during validation</p></li>
+<li><p><strong>data_parallel</strong> (<em>bool</em>) – A flag indicating whether the network should be data parallel (torch.nn.DataParallel)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 
 
              </article>
@@ -893,6 +1030,7 @@ a size of 128 cubic pixels.</p>
 <li><a class="reference internal" href="#imaging-transforms">Imaging Transforms</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#module-eisen.utils.workflows">Eisen.utils.workflows</a></li>
 </ul>
 
             </div>

@@ -68,9 +68,10 @@ The transforms are fed individual entries of the list and act on one or multiple
 .. autoclass:: JsonDataset
    :members: __init__
 
-.. automodule:: eisen.datasets
-
 .. autoclass:: MSDDataset
+   :members: __init__
+
+.. autoclass:: PatchCamelyon
    :members: __init__
 
 
@@ -227,6 +228,54 @@ for deep learning tasks.
    :members: __init__
 
 .. autoclass:: FixedMeanStdNormalization
+   :members: __init__
+
+
+*********************
+Eisen.utils.workflows
+*********************
+
+.. automodule:: eisen.utils.workflows
+    :members:
+    :private-members:
+    :special-members:
+
+Workflows realize high level functionality that joins several building blocks such as losses, metrics, transforms
+optimizers and models together in order to perform operations on them.
+
+Typical examples of workflows are Training, Testing and Validation. These basic workflows implement respectively the
+training, testing and validation loops. Workflows are implemented as python objects similar to this:
+
+.. code-block:: python
+
+    from eisen.workflow import GenericWorkflow
+
+    class DemoWorkflow(GenericWorkflow):
+        def __init__(
+            self,
+            model,
+            data_loader,
+            losses,
+            optimizer,
+            metrics
+        ):
+
+        # ...
+
+In particular, the arguments of the `__init__` function represent building blocks that need to be used together
+during the workflow.
+
+Refer to the following documentation to learn more.
+
+.. automodule:: eisen.utils.workflows
+
+.. autoclass:: Training
+   :members: __init__
+
+.. autoclass:: Testing
+   :members: __init__
+
+.. autoclass:: Validation
    :members: __init__
 
 

@@ -11,11 +11,13 @@ Once you have installed the software package, you can use it by simply importing
 command line interface (CLI).
 
 In python:
+
 .. code-block:: python
 
    import eisen
 
 Using the CLI you need to type in your terminal:
+
 .. code-block:: bash
 
    eisen --help
@@ -51,7 +53,7 @@ If you want to be working on the latest possible software version, you can insta
 Obtain Eisen using DockerHub
 *********************
 
-You can obtain a Docker image from Dockerhub by executing, on a machine with a fully functional isntallation of
+You can obtain a Docker image from Dockerhub by executing, on a machine with a fully functional installation of
 Docker CE
 
 .. code-block:: bash

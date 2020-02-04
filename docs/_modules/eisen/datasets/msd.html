@@ -162,6 +162,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../eisen/api.html#eisen-datasets">Eisen.datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../eisen/api.html#eisen-io">Eisen.io</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../eisen/api.html#module-eisen.transforms">Eisen.transforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../eisen/api.html#module-eisen.utils.workflows">Eisen.utils.workflows</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Get Started</span></p>
 <ul>
@@ -323,9 +324,9 @@
         <span class="n">item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">json_dataset</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="p">:</span>
-            <span class="n">sample</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+            <span class="n">item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">sample</span></div>
+        <span class="k">return</span> <span class="n">item</span></div>
 </pre></div>
 
              </article>
