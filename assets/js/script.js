@@ -19,7 +19,7 @@ function closeNav() {
 function copyToClipboard() {
     let selected = false;
     let el = document.createElement('textarea');
-    el.value = 'pip3 install --upgrade eisen';
+    el.value = 'pip install --upgrade eisen';
     el.setAttribute('readonly', '');
     el.style.position = 'absolute';
     el.style.left = '-9999px';
